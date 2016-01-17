@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
   #GET /articles
   def index
+    #Todos los registros
     @articles = Article.all
   end
 
   #GET /articles/:id
   def show
+    #Encontrar un registro por su id
     @article = Article.find(params[:id])
   end
 

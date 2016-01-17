@@ -2,6 +2,12 @@
 <div> 
 	<%=@article.body%> 
 </div>
+<p>
+	Escrito por: 
+	<% unless @article.user.nil? %>
+		 <%= @article.user.email %>
+	<% end %>	
+</p>
 <div>
 	<%=link_to "Editar", edit_article_path(@article) %>
 </div>

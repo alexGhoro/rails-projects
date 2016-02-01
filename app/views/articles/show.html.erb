@@ -1,12 +1,15 @@
 <h1><%= @article.title %></h1>
-<div> 
-	<%=@article.body%> 
+<div>
+	<%=@article.body%>
 </div>
 <p>
-	Escrito por: 
+	Escrito por:
 	<% unless @article.user.nil? %>
 		 <%= @article.user.email %>
-	<% end %>	
+	<% end %>
+</p>
+<p>
+	Visitas: <%= @article.visits_count %>		
 </p>
 <div>
 	<%=link_to "Editar", edit_article_path(@article) %>

@@ -9,8 +9,19 @@
 	<% end %>
 </p>
 <p>
-	Numero de Visitas: <%= @article.visits_count %>		
+	Numero de Visitas: <%= @article.visits_count %>
 </p>
+<div class="field">
+	<h3>Comentarios</h3>
+	<%= render "comments/form" %>
+	<ul>
+		<% @article.comments.each do |comment| %>
+		<li>
+			<%= comment.body %> - <%= comment.user.email %>
+		</li>
+		<% end %>
+	</ul>
+</div>
 <div>
 	<%=link_to "Editar", edit_article_path(@article) %>
 </div>

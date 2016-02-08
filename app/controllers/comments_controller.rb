@@ -1,15 +1,28 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:update, :destroy]
+  before_action :set_comment, only: [:update, :destroy, :show]
   before_action :set_article
   before_action :authenticate_user!
 
-  respond_to :html
+  respond_to :html,:json
+
+  def show    
+  end
 
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.article = @article
-    @comment.save
-    respond_with(@comment.article)
+    respond_to do |format|
+      if @comment.save
+        format.json {render :show, status: :created, location: @comment.article}
+      else
+        format.json{render json: @comment.erros, status: :unprocessable_entity}
+      end
+    end
+
+    #@comment = current_user.comments.new(comment_params)
+    #@comment.article = @article
+    #@comment.save
+    #respond_with(@comment)
   end
 
   def update

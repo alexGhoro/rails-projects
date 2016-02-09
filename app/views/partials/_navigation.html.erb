@@ -3,9 +3,18 @@
       <ul  style="list-style-type:none" class="no-list row center-xs middle-xs">
         <li class="col-md">
           <h1 class="no-margin" id="logo">  <%= link_to "alexGhoro DOTA2", root_path %></h1>          
-        </li>   
+        </li>  
+
         <li class="col-md">          
           <%= link_to "Articulos", articles_path %>
+        </li>
+
+        <% @categories.each do |category| %>
+          <li class="col-md">
+            <%= link_to category.name,category %>
+          </li>
+        <% end %>
+
 
         <% if user_signed_in? %>
           <li class="col-md">
@@ -15,7 +24,8 @@
           <li class="col-md">
             <%= link_to "Iniciar sesión", new_user_session_path %>
           </li>
-        <% end %>      
+        <% end %> 
+
       </ul>     
     </nav>
 </header>

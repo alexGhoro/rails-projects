@@ -1,19 +1,24 @@
 <h1><%= @article.title %></h1>
+
 <div class="field">
-	<%= image_tag @article.cover.url(:thumb) %>
+	<% @article.categories.each do |category| %>
+	<%= link_to category.name, category, style:"color:#{category.color};" %>
+	<% end %>
 </div>
-<div>
-	<%=@article.body%>
-</div>
+
+<div class="field">	<%= image_tag @article.cover.url(:thumb) %> </div>
+
+<div> <%=@article.body%> </div>
+
 <p>
 	Escrito por:
 	<% unless @article.user.nil? %>
 		 <%= @article.user.email %>
 	<% end %>
 </p>
-<p>
-	Numero de Visitas: <%= @article.visits_count %>
-</p>
+
+<p>	Numero de Visitas: <%= @article.visits_count %> </p>
+
 <div class="field">
 	<h3>Comentarios</h3>
 	<%= render "comments/form" %>
@@ -24,9 +29,9 @@
 			<%= comment.body %> - <%= comment.user.email %>
 		</li>
 		<% end %>
-	</ul>
-	
+	</ul>	
 </div>
+
 <div>
 	<%=link_to "Editar", edit_article_path(@article) %>
 </div>

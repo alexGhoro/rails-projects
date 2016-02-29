@@ -41,6 +41,28 @@ a,a:visited{
 .text-left{
 	text-align: left;
 }
+
+.text-center{
+	text-align: center;
+}
+
+.background-cover{
+	background-position: center;
+	background-size: cover;
+}
+
+.article-height{
+	height:160px;
+}
+
+.relative{
+	position: relative;
+}
+
+.absolute{
+	position: absolute;
+}
+
 .form-control{
 	border:none;
 	border-bottom: 1px solid;

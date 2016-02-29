@@ -8,7 +8,7 @@
 
 <div class="field">	<%= image_tag @article.cover.url(:thumb) %> </div>
 
-<div> <%=@article.body%> </div>
+<div> <%= Sanitize.fragment( @article.body, Sanitize::Config::RELAXED).html_safe %> </div>
 
 <p>
 	Escrito por:
